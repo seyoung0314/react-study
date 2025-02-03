@@ -1,4 +1,8 @@
 import React from "react";
+import Hello from "./components/Hello.jsx";
+import Bye from "./components/Bye.jsx";
+import ExpenseItem from './components/expenses/ExpenseItem.jsx';
+
 
 // 컴포넌트
 function App() {
@@ -24,18 +28,30 @@ function App() {
   // return $h1;
 
   const text = "React";
+  // return (
+  //   // <React.Fragment>  = <>
+  //   // <React.Fragment>
+  //   //   <header>
+  //   //     <h1 id="h1">hello {text}</h1>
+  //   //     <h2 className="h2">hello react</h2>
+  //   //     <label htmlFor=""></label>
+  //   //     <input type="text" id="input" />
+  //   //   </header>
+  //   //   <main>Main</main>
+  //   // </React.Fragment>
+
+  //   <>
+  //   <Hello />
+  //   <Bye></Bye>
+  //   </>
+  // );
   return (
-    // <React.Fragment>  = <>
-    <React.Fragment>
-      <header>
-        <h1 id="h1">hello {text}</h1>
-        <h2 className="h2">hello react</h2>
-        <label htmlFor=""></label>
-        <input type="text" id="input" />
-      </header>
-      <main>Main</main>
-    </React.Fragment>
+<>
+<ExpenseItem></ExpenseItem>
+</>
+
   );
+
 }
 
 export default App;
