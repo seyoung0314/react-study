@@ -1,8 +1,8 @@
 import React from "react";
 import Hello from "./components/Hello.jsx";
 import Bye from "./components/Bye.jsx";
-import ExpenseItem from './components/expenses/ExpenseItem.jsx';
-
+import ExpenseItem from "./components/expenses/ExpenseItem.jsx";
+import ExpenseList from "./components/expenses/ExpenseList.jsx";
 
 // 컴포넌트
 function App() {
@@ -45,13 +45,27 @@ function App() {
   //   <Bye></Bye>
   //   </>
   // );
+
+  const expenses = [
+  {
+    "title": "치킨",
+    "price": 16000,
+    "date": new Date(2024,1,1),
+  },
+  {
+    "title": "햄버거",
+    "price": 8000,
+    "date": new Date(2024,1,3),
+  },
+  {
+    "title": "아이스크림",
+    "price": 1300,
+    "date": new Date(2024,1,3),
+  },
+  ];
   return (
-<>
-<ExpenseItem></ExpenseItem>
-</>
-
+    <ExpenseList expenses={expenses}/>
   );
-
 }
 
 export default App;
