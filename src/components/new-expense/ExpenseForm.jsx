@@ -38,7 +38,11 @@ const ExpenseForm = ({ onAdd }) => {
     console.log('payload: ', userInput);
     
     // 부모가 보낸 데이터전달용 함수를 호출
-    onAdd(userInput);
+    onAdd({
+      ...userInput,
+      date: new Date(userInput.date)
+    });
+    
 
   };
 

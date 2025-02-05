@@ -25,7 +25,7 @@ const ExpenseList = ({ expenses }) => {
       {expenses
         .filter((ex) => ex.date.getFullYear().toString() === year)
         .map((ex) => (
-          <ExpenseItem expense={ex} />
+          <ExpenseItem key={Math.random()} expense={ex} />
         ))}
     </div>
   );
