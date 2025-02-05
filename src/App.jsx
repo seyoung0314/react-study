@@ -5,14 +5,23 @@ import "./App.css";
 
 // 컴포넌트
 function App() {
+
+  //목표 데이터들의 묶음 배열
+  const [goals, setGoals] = useState([]);
+
+  //CourseInput에게 전달 할 함수
+  const onAddGoal = (goal) => {
+    setGoals([...goals, goal]);  
+  };
+
   return (
     <>
       <div>
         <section id="goal-form">
-          <CourseInput></CourseInput>
+          <CourseInput onAdd={onAddGoal}></CourseInput>
         </section>
         <section id="goals">
-          <CourseList></CourseList>
+          <CourseList items = {goals}></CourseList>
         </section>
       </div>
     </>
