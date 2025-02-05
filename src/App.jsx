@@ -1,8 +1,6 @@
 import React from "react";
-import Hello from "./components/Hello.jsx";
-import Bye from "./components/Bye.jsx";
-import ExpenseItem from "./components/expenses/ExpenseItem.jsx";
 import ExpenseList from "./components/expenses/ExpenseList.jsx";
+import Counter from "./components/Counter";
 
 // 컴포넌트
 function App() {
@@ -65,6 +63,7 @@ function App() {
   ];
   return (
     <>
+      <Counter />
       <ExpenseList expenses={expenses} />
     </>
   );
