@@ -1,6 +1,7 @@
 import React from "react";
 import ExpenseList from "./components/expenses/ExpenseList.jsx";
 import Counter from "./components/Counter";
+import NewExpense from "./components/new-expense/NewExpense";
 
 // 컴포넌트
 function App() {
@@ -64,6 +65,7 @@ function App() {
   return (
     <>
       <Counter />
+      <NewExpense />
       <ExpenseList expenses={expenses} />
     </>
   );
