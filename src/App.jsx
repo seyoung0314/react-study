@@ -64,7 +64,9 @@ function App() {
   },
   ];
   return (
-    <ExpenseList expenses={expenses}/>
+    <>
+      <ExpenseList expenses={expenses} />
+    </>
   );
 }
 
