@@ -1,7 +1,9 @@
 import React from 'react';
 import Chart from './Chart';
 
-const ExpenseChart = () => {
+const ExpenseChart = ({expenses}) => {
+  
+  // console.log("expenses : ",expenses);
   
   const chartDataPoints = [
     { label: 'Jan', value: 0 },
@@ -18,6 +20,13 @@ const ExpenseChart = () => {
     { label: 'Dec', value: 0 },
   ];
 
+    expenses.forEach(ex => {
+      const expenseMonth = ex.date.getMonth();
+      chartDataPoints[expenseMonth].value += ex.price;
+    });
+
+  // console.log(chartDataPoints);
+  
   return <Chart chartDataPoints = {chartDataPoints} />;
 };
 

@@ -25,17 +25,16 @@ const ExpenseList = ({ expenses }) => {
 
   // 있을 때
   let filteredExpenses = expenses
-    .filter((ex) => ex.date.getFullYear().toString() === year)
-    .map((ex) => <ExpenseItem key={Math.random()} expense={ex} />);
+    .filter((ex) => ex.date.getFullYear().toString() === year);
 
   if (filteredExpenses.length > 0) {
-    content = filteredExpenses;
+    content = filteredExpenses.map((ex) => <ExpenseItem key={Math.random()} expense={ex} />);
   }
 
   return (
     <div className="expenses">
       <ExpenseFilter onChangeFilter={onFilterChange} />
-      <ExpenseChart></ExpenseChart>
+      <ExpenseChart expenses ={filteredExpenses}></ExpenseChart>
       {content}
     </div>
   );
