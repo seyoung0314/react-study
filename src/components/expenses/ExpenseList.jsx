@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
 import "./ExpenseList.css";
 import ExpenseFilter from "./ExpenseFilter";
@@ -19,14 +19,22 @@ const ExpenseList = ({ expenses }) => {
   //   return expenses.map(ex => <ExpenseItem expense={ex} />);
   // };
 
+  //지출 데이터가 없을 때 보여줄 컴포넌트
+  let content = <p>데이터가 없습니다.</p>;
+
+  // 있을 때
+  let filteredExpenses = expenses
+    .filter((ex) => ex.date.getFullYear().toString() === year)
+    .map((ex) => <ExpenseItem key={Math.random()} expense={ex} />);
+
+  if (filteredExpenses.length > 0) {
+    content = filteredExpenses;
+  }
+
   return (
     <div className="expenses">
       <ExpenseFilter onChangeFilter={onFilterChange} />
-      {expenses
-        .filter((ex) => ex.date.getFullYear().toString() === year)
-        .map((ex) => (
-          <ExpenseItem key={Math.random()} expense={ex} />
-        ))}
+      {content}
     </div>
   );
 };
