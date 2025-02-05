@@ -2,7 +2,7 @@
 import './ExpenseForm.css';
 import React, { useState } from 'react';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onAdd }) => {
 
   // 단일 상태값 관리
   // const [title, setTitle] = useState('');
@@ -34,8 +34,12 @@ const ExpenseForm = () => {
     //   price,
     //   date
     // };
-    // console.log('payload: ', payload);
+
+    console.log('payload: ', userInput);
     
+    // 부모가 보낸 데이터전달용 함수를 호출
+    onAdd(userInput);
+
   };
 
   const handleTitleInput = e => { 
