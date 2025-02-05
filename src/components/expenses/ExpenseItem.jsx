@@ -13,8 +13,8 @@ const { title, price, date } = expense;
     첫번째 요소는 관리할 상태값의 초기값
     두번째 요소는 해당 상태값을 변경할 때 사용하는 setter함수
   */
-    let [itemTitle, setItemTitle] = useState(title);
-    console.log('itemTitle:', itemTitle);
+    const [itemTitle, setItemTitle] = useState(title);
+    // console.log('itemTitle:', itemTitle);
 
   // 원화 표기법으로 변환
   const formatPrice = new Intl.NumberFormat('ko-KR').format(price);
