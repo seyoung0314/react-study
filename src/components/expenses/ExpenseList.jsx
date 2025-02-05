@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
 import "./ExpenseList.css";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpenseChart from "../chart/ExpenseChart";
 
 const ExpenseList = ({ expenses }) => {
   // ExpenseFilter에서 선택한 연도값을 여기서 출력
@@ -34,6 +35,7 @@ const ExpenseList = ({ expenses }) => {
   return (
     <div className="expenses">
       <ExpenseFilter onChangeFilter={onFilterChange} />
+      <ExpenseChart></ExpenseChart>
       {content}
     </div>
   );
