@@ -2,11 +2,11 @@ import React from "react";
 import "./CourseList.css";
 import CourseItem from "./CourseItem";
 
-const CourseList = ({items}) => {
+const CourseList = ({items,deleteGoal}) => {
   return (
     <ul className="goal-list">
       {
-        items.map(item=><CourseItem key={Math.random()} item={item}/>)
+        items.map(item=><CourseItem key={item.id} item={item} deleteGoal={deleteGoal}/>)
       }
     </ul>
   );

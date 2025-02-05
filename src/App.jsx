@@ -5,13 +5,17 @@ import "./App.css";
 
 // 컴포넌트
 function App() {
-
   //목표 데이터들의 묶음 배열
   const [goals, setGoals] = useState([]);
 
   //CourseInput에게 전달 할 함수
   const onAddGoal = (goal) => {
-    setGoals([...goals, goal]);  
+    setGoals([...goals, goal]);
+  };
+
+  const deleteGoal = (id) => {
+    const newList = goals.filter((goal) => id !== goal.id);
+    return setGoals(newList);
   };
 
   return (
@@ -21,7 +25,7 @@ function App() {
           <CourseInput onAdd={onAddGoal}></CourseInput>
         </section>
         <section id="goals">
-          <CourseList items = {goals}></CourseList>
+          <CourseList items={goals} deleteGoal={deleteGoal}></CourseList>
         </section>
       </div>
     </>

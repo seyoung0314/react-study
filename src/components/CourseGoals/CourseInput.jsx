@@ -9,9 +9,13 @@ const CourseInput = ({onAdd}) => {
   const handleSubmit = e =>{
     e.preventDefault();
 
-    onAdd(enteredText);
+    onAdd({
+      "id":Math.random().toString(),
+      "enteredText":enteredText
+    });
     //전송이 끝나면 입력창 비우기
     setEnteredText("");
+    
   };
 
 const handleGoalInput = e =>{
