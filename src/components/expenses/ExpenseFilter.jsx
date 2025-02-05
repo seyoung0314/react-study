@@ -1,9 +1,11 @@
 import React from 'react';
 import './ExpenseFilter.css';
 
-const ExpenseFilter = () => {
+const ExpenseFilter = ({ onChangeFilter }) => {
 
-  const changeYearHandler = e => { };
+  const changeYearHandler = e => { 
+    onChangeFilter(e.target.value);
+  };
 
   return (
     <div className='expenses-filter'>

@@ -48,12 +48,12 @@ function App() {
   {
     "title": "치킨",
     "price": 16000,
-    "date": new Date(2024,1,1),
+    "date": new Date(2022,1,1),
   },
   {
     "title": "햄버거",
     "price": 8000,
-    "date": new Date(2024,1,3),
+    "date": new Date(2023,1,3),
   },
   {
     "title": "아이스크림",
