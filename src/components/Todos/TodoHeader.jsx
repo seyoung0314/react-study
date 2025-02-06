@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './scss/TodoHeader.module.scss'
 import TodoTemplet from './TodoTemplate';
 
-export const TodoHeader = () => {
+export const TodoHeader = ({count}) => {
 
   const { day, 'tasks-left': left } = styles;
   return (
     <header>
       <h1>2025년 2월 6일</h1>
       <div className={day}>목요일</div>
-      <div className={left}>할 일 3개 남음</div>
+      <div className={left}>할 일 {count}개 남음</div>
     </header>
   );
 }

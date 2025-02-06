@@ -5,21 +5,28 @@ import TodoMain from "./TodoMain";
 import TodoInput from "./TodoInput";
 const TodoTemplate = () => {
   const [todoItems, setTodoItems] = useState([]);
+  const [count, setCount] = useState(0);
+
+  const changCount = (count) => {
+    setCount(count);
+  };
 
   const onInput = (data) => {
-    if(data){
-      setTodoItems([...todoItems, data]);   
+    if (data) {
+      setTodoItems([...todoItems, data]);
+      setCount(count + 1);
     }
   };
 
   const onDelete = (data) => {
-    setTodoItems(todoItems.filter(item=>item!==data));
+    setTodoItems(todoItems.filter((item) => item !== data));
+    setCount(count - 1);
   };
 
   return (
     <div className={styles.TodoTemplate}>
-      <TodoHeader />
-      <TodoMain  items={todoItems} onDelete={onDelete}/>
+      <TodoHeader count={count} />
+      <TodoMain items={todoItems} onDelete={onDelete} />
       <TodoInput onInput={onInput} />
     </div>
   );
