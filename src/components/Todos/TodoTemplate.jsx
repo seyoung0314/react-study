@@ -4,7 +4,7 @@ import styles from "./scss/TodoTemplate.module.scss";
 import TodoMain from "./TodoMain";
 import TodoInput from "./TodoInput";
 const TodoTemplate = () => {
-  const [todoItems, setTodoItems] = useState([]);
+  const [todoItems, setTodoItems] = useState([{id:"s",inputText:"ddd"}]);
   const [count, setCount] = useState(0);
 
   const changCount = (count) => {
@@ -19,7 +19,8 @@ const TodoTemplate = () => {
   };
 
   const onDelete = (data) => {
-    setTodoItems(todoItems.filter((item) => item !== data));
+
+    setTodoItems(todoItems.filter((item) => item.id !== data));
     setCount(count - 1);
   };
 

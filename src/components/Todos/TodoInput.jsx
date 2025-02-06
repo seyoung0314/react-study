@@ -16,7 +16,10 @@ const TodoInput = ({ onInput }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onInput(inputText);
+    onInput({
+      id : Math.random(),
+      inputText : inputText,
+    });
     setInputText("");
   };
 
