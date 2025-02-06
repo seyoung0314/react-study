@@ -16,13 +16,11 @@ const TodoInput = ({ onInput }) => {
     setBtnStatus(!btnStatus);
   };
 
-  useEffect(()=>{
-
-  },btnStatus)
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    if(!inputText.trim()){
+      return;
+    }
     onInput({
       id : Math.random(),
       inputText : inputText,
