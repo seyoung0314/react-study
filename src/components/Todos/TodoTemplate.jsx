@@ -12,10 +12,14 @@ const TodoTemplate = () => {
     }
   };
 
+  const onDelete = (data) => {
+    setTodoItems(todoItems.filter(item=>item!==data));
+  };
+
   return (
     <div className={styles.TodoTemplate}>
       <TodoHeader />
-      <TodoMain  items={todoItems} />
+      <TodoMain  items={todoItems} onDelete={onDelete}/>
       <TodoInput onInput={onInput} />
     </div>
   );
