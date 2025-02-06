@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdAdd } from "react-icons/md";
 import styles from "./scss/TodoInput.module.scss";
 const TodoInput = ({ onInput }) => {
@@ -6,12 +6,19 @@ const TodoInput = ({ onInput }) => {
     "form-wrapper": formWrapper,
     "insert-btn": insert,
     "insert-form": insertForm,
+    open,
   } = styles;
 
   const [inputText, setInputText] = useState("");
-  const [isvalid, setIsvaild] = useState(false);
+  const [btnStatus, setBtnStatus] = useState(true);
 
-  const handleClick = (e) => {};
+  const handleClick = (e) => {
+    setBtnStatus(!btnStatus);
+  };
+
+  useEffect(()=>{
+
+  },btnStatus)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +26,7 @@ const TodoInput = ({ onInput }) => {
     onInput({
       id : Math.random(),
       inputText : inputText,
+      status : false
     });
     setInputText("");
   };
@@ -30,15 +38,15 @@ const TodoInput = ({ onInput }) => {
 
   return (
     <>
-      <div className={formWrapper}>
+      {!btnStatus ? (<div className={formWrapper}>
         <form className={insertForm} onSubmit={handleSubmit}>
           <input 
           onInput={handleInput}
           value={inputText}
           type="text" placeholder="할 일을 입력 후, 엔터를 누르세요!" />
         </form>
-      </div>
-      <button className={insert}>
+      </div>) : null}
+      <button className={`${insert} ${!btnStatus ? open : ""}`}>
         <MdAdd onClick={handleClick} />
       </button>
     </>

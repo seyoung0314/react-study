@@ -1,15 +1,35 @@
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 import TodoHeader from "./TodoHeader";
 import styles from "./scss/TodoTemplate.module.scss";
 import TodoMain from "./TodoMain";
 import TodoInput from "./TodoInput";
 const TodoTemplate = () => {
-  const [todoItems, setTodoItems] = useState([{id:"s",inputText:"ddd"}]);
+  const [todoItems, setTodoItems] = useState([]);
   const [count, setCount] = useState(0);
 
-  const changCount = (count) => {
-    setCount(count);
+  const calculateLength = () => {
+    let count = 0;
+    todoItems.forEach((item) => {
+      if (item.status === false) {
+        count++;
+      }
+    });
+    return count;
   };
+
+  const changeCount = (data) => {
+    setTodoItems(
+      todoItems.map((item) => {
+      if (item.id === data.id) {
+        return data;
+      }
+      return item;
+    }));
+  };
+
+  useEffect(() => {
+    setCount(calculateLength());
+  }, [todoItems]); 
 
   const onInput = (data) => {
     if (data) {
@@ -19,7 +39,6 @@ const TodoTemplate = () => {
   };
 
   const onDelete = (data) => {
-
     setTodoItems(todoItems.filter((item) => item.id !== data));
     setCount(count - 1);
   };
@@ -27,7 +46,11 @@ const TodoTemplate = () => {
   return (
     <div className={styles.TodoTemplate}>
       <TodoHeader count={count} />
-      <TodoMain items={todoItems} onDelete={onDelete} />
+      <TodoMain
+        items={todoItems}
+        onDelete={onDelete}
+        changeCount={changeCount}
+      />
       <TodoInput onInput={onInput} />
     </div>
   );
