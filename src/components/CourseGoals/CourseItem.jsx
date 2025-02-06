@@ -1,8 +1,11 @@
 import React, {useState} from "react";
-import "./CourseItem.css";
+import styles from './CourseItem.module.css';
 import Modal from "../ui/Modal";
 
 const CourseItem = ({ item, deleteGoal }) => {
+
+  const { 'goal-item': goalItem } = styles;
+
   const { id, enteredText } = item;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,14 +33,16 @@ const CourseItem = ({ item, deleteGoal }) => {
   if(isModalOpen){
     modal= <Modal onConfirm={handleConfirmDelete} onCancel={handleCloseModal} />;
   }
-  return(
-  <>
-    <li id={id} className="goal-item" onClick={handleOpenModal}>
+  return (
+    <>
+    <li
+      className={goalItem}
+      onClick={handleOpenModal}>
       {enteredText}
     </li>
     {modal}
-  </>
-  )
+    </>
+  );
 };
 
 export default CourseItem;
