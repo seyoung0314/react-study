@@ -7,7 +7,7 @@ const TodoTemplate = () => {
   const [todoItems, setTodoItems] = useState([]);
   const [count, setCount] = useState(0);
 
-  const calculateLength = () => {
+  const countingChecked = () => {
     let count = 0;
     todoItems.forEach((item) => {
       if (item.status === false) {
@@ -28,7 +28,7 @@ const TodoTemplate = () => {
   };
 
   useEffect(() => {
-    setCount(calculateLength());
+    setCount(countingChecked());
   }, [todoItems]); 
 
   const onInput = (data) => {
@@ -45,7 +45,7 @@ const TodoTemplate = () => {
 
   return (
     <div className={styles.TodoTemplate}>
-      <TodoHeader count={count} />
+      <TodoHeader count={count} items={todoItems}/>
       <TodoMain
         items={todoItems}
         onDelete={onDelete}
