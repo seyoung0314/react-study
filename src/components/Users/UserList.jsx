@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './UserList.module.scss';
+import styles from './UserList.module.css';
 import Card from '../ui/Card';
 
 const UserList = ({users}) => {

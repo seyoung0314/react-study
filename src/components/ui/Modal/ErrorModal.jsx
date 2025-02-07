@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "../../ui/Card";
-import Button from "../../ui/Button";
-import styles from "./ErrorModal.module.scss";
-import Portal from "../../ui/Portal/Portal";
+import Card from "../Card";
+import Button from "../Button";
+import styles from "./ErrorModal.module.css";
+import Portal from "../Portal/Portal";
 
 // portal을 사용하기 위한
 import ReactDOM from "react-dom";
