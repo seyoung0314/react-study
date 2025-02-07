@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./App.css";
-import TodoTemplate from './components/Todos/TodoTemplate';
+import AddUsers from "./components/Users/AddUsers";
+import UserList from "./components/Users/UserList";
 
 // 컴포넌트
 function App() {
 
   return (
     <>
-      <TodoTemplate/>
+      <AddUsers/>
+      <UserList/>
     </>
   );
 }
