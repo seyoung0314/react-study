@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../../ui/Card";
 import Button from "../../ui/Button";
 import styles from "./ErrorModal.module.scss";
+import Portal from "../../ui/Portal/Portal";
 
 // portal을 사용하기 위한
 import ReactDOM from "react-dom";
@@ -30,20 +31,14 @@ const ModalContent = ({ title, message, onClose }) => {
 const ErrorModal = ({ title, message, onClose }) => {
   return (
     <>
-      { 
-        ReactDOM.createPortal(
-          <BackDrop onClose={onClose} />,
-          document.getElementById('backdrop-root')
-        )
-      }
+      <Portal destId={'backdrop-root'} >
+      <BackDrop onClose={onClose} />
+        </Portal>
 
-{ 
-        ReactDOM.createPortal(
-          <ModalContent title ={title} message={message} onClose={onClose}/>,
-          document.getElementById('overlay-root')
-        )
-      }
-      
+        <Portal destId={'overlay-root'} >
+        <ModalContent title ={title} message={message} onClose={onClose}/>
+        </Portal>
+  
     </>
   );
 };
