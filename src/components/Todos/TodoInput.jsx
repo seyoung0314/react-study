@@ -22,7 +22,7 @@ const TodoInput = ({ onInput }) => {
       return;
     }
     onInput({
-      id : Math.random(),
+      id : Date.now() + Math.random(),
       inputText : inputText,
       status : false
     });
@@ -36,14 +36,22 @@ const TodoInput = ({ onInput }) => {
 
   return (
     <>
-      {!btnStatus ? (<div className={formWrapper}>
+      {/* {!btnStatus ? (<div className={formWrapper}>
         <form className={insertForm} onSubmit={handleSubmit}>
           <input 
           onInput={handleInput}
           value={inputText}
           type="text" placeholder="할 일을 입력 후, 엔터를 누르세요!" />
         </form>
-      </div>) : null}
+      </div>) : null} */}
+      {btnStatus || <div className={formWrapper}>
+        <form className={insertForm} onSubmit={handleSubmit}>
+          <input 
+          onInput={handleInput}
+          value={inputText}
+          type="text" placeholder="할 일을 입력 후, 엔터를 누르세요!" />
+        </form>
+      </div>}
       <button className={`${insert} ${!btnStatus ? open : ""}`}>
         <MdAdd onClick={handleClick} />
       </button>

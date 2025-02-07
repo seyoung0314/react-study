@@ -17,14 +17,29 @@ const TodoTemplate = () => {
     return count;
   };
 
-  const changeCount = (data) => {
-    setTodoItems(
-      todoItems.map((item) => {
-      if (item.id === data.id) {
-        return data;
-      }
-      return item;
-    }));
+
+  // 원본객체를 수정하게되면 불변성이 깨질수잇음
+  // const OnChangeCount = (id) => {
+  //   setTodoItems(
+  //     todoItems.map((item) => {
+  //     if (item.id === id) {
+  //       item.status = !item.status;
+  //     }
+  //     return item;
+  //   }));
+  // };
+  
+  // 이렇게 새로운 객체로 반환해주어야함
+  // 상태변수의 setter는 이전상태값을 콜백 파라미터로 사용가능
+  const OnChangeCount = (id) => {
+    setTodoItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === id) {
+          return { ...item, status: !item.status }; 
+        }
+        return item;
+      });
+    });
   };
 
   useEffect(() => {
@@ -49,7 +64,7 @@ const TodoTemplate = () => {
       <TodoMain
         items={todoItems}
         onDelete={onDelete}
-        changeCount={changeCount}
+        OnChangeCount={OnChangeCount}
       />
       <TodoInput onInput={onInput} />
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdDelete, MdDone } from "react-icons/md";
 import styles from "./scss/TodoItem.module.scss";
-const TodoItem = ({ item, onDelete, changeCount }) => {
+const TodoItem = ({ item, onDelete, OnChangeCount }) => {
   const {
     text,
     remove,
@@ -18,14 +18,14 @@ const TodoItem = ({ item, onDelete, changeCount }) => {
   };
 
   const handleCheckBtnClick = (e) => {
-    changeCount({ ...item, status: !status });
+    OnChangeCount(id);
   };
 
   return (
     <li className={itemStyle}>
       <div className={`${checkCircle} ${status ? active : ""}`} 
           onClick={handleCheckBtnClick}>
-        {status ? (<MdDone />): null}
+        {status && <MdDone />}
       </div>
       <span className={`${text} ${status ? finish : ""}`}>{inputText}</span>
       <div className={remove}>
