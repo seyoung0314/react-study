@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 import Card from "../ui/Card";
 import styles from "./Login.module.css";
@@ -21,17 +21,17 @@ const Login = ({onLogin}) => {
   const handleEmail = (e) => {
     setEnteredEmail(e.target.value);
 
-    setFormIsValid(
-      enteredEmail.includes('@') && e.target.value.trim().length > 6
-    );
+    // setFormIsValid(
+    //   enteredEmail.includes('@') && e.target.value.trim().length > 6
+    // );
   };
 
   const handlePassword = (e) => {
     setEnteredPassword(e.target.value);
 
-    setFormIsValid(
-      enteredEmail.includes('@') && e.target.value.trim().length > 6
-    );
+    // setFormIsValid(
+    //   enteredEmail.includes('@') && e.target.value.trim().length > 6
+    // );
   };
 
   // 이메일 검증
@@ -49,6 +49,15 @@ const Login = ({onLogin}) => {
     e.preventDefault();
     onLogin(enteredEmail,enteredPassword);
   }
+
+    // 버튼 활성화 상태를 처리(side effect)를 위한 useEffect
+    useEffect(() => { 
+      console.log('useEffect call in Login.js');
+      
+      setFormIsVaild(
+        enteredEmail.includes('@') && enteredPassword.trim().length > 6
+      );
+    }, [enteredEmail, enteredPassword]);
 
   return (
     <Card className={styles.login}>
