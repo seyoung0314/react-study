@@ -50,19 +50,28 @@ const Login = ({onLogin}) => {
     onLogin(enteredEmail,enteredPassword);
   }
 
-    // 버튼 활성화 상태를 처리(side effect)를 위한 useEffect
-    useEffect(() => { 
+  useEffect(() => {
+    // 디바운싱 1초 적용
+    const timer = setTimeout(() => {
       console.log('useEffect call in Login.js');
-      
       setFormIsVaild(
         enteredEmail.includes('@') && enteredPassword.trim().length > 6
       );
-    }, [enteredEmail, enteredPassword]);
+    }, 1000);
+    // cleanup 함수 - 컴포넌트가 업데이트 되기 직전에 실행
+    return () => {
+      // console.log('clean up!! - ', enteredEmail);
+      clearTimeout(timer);
+    };
+  }, [enteredEmail, enteredPassword]);
 
   return (
     <Card className={styles.login}>
       <form onSubmit={handleSubmit}>
-        <div className={`${styles.control} ${emailIsValid === false? styles.invalid : ''}`}>
+        <div 
+          className={`${styles.control} ${
+            emailIsValid === false ? styles.invalid : ''
+          }`}>
           <label htmlFor="email">E-Mail</label>
           <input
             type="email"
@@ -72,7 +81,10 @@ const Login = ({onLogin}) => {
             onBlur={vaildateEmail}
           />
         </div>
-        <div className={`${styles.control} ${passwordIsValid === false? styles.invalid : ''}`}>
+        <div 
+                  className={`${styles.control} ${
+                    passwordIsValid === false ? styles.invalid : ''
+                  }`}>
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -86,8 +98,7 @@ const Login = ({onLogin}) => {
           <Button 
           type="submit" 
           className={styles.btn}
-          disabled={!formIsValid}
-          >
+          disabled={!formIsValid}>
             Login
           </Button>
         </div>
